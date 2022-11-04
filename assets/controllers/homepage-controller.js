@@ -3,7 +3,7 @@ import {Controller} from '@hotwired/stimulus';
 /*
  * This is an example Stimulus controller!
  *
- * Any element with a data-controller="admin_users" attribute will cause
+ * Any element with a data-controller="homepage" attribute will cause
  * this controller to be executed. The name "admin_users" comes from the filename:
  * admin_users_controller.js -> "admin_users"
  *
@@ -11,31 +11,39 @@ import {Controller} from '@hotwired/stimulus';
  */
 export default class extends Controller {
     connect() {
+        // Refresh data each 5 seconds
+        const REFRESH_INTERVAL = 5000; // 5 seconds
 
-        // Delay the user input
-        function delay(callback, ms) {
-            let timer = 0;
-            return function () {
-                let context = this, args = arguments;
-                clearTimeout(timer);
-                timer = setTimeout(function () {
-                    callback.apply(context, args);
-                }, ms || 0);
-            };
+        let myHeaders = new Headers();
+        myHeaders.append("Accept", "application/json");
+
+        let requestOptions = {
+            method: 'GET', headers: myHeaders, redirect: 'follow'
+        };
+
+        // Fetch first results
+        fetchIt();
+
+        // Set delays
+        setInterval(function () {
+            fetchIt();
+        }, REFRESH_INTERVAL);
+
+        // Update UI
+        function fetchIt() {
+            fetch("quick_json", requestOptions)
+                .then(response => response.text())
+                .then(result => {
+                    updateUi(JSON.parse(result));
+                })
+                .catch(error => console.log('error', error));
         }
 
-        // Search button listening
-        $('#admin_users_search').keyup(delay(function (e) {
-            $.ajax({
-                url: $(this).data('search-target'),
-                method: 'POST',
-                data: {keyword: this.value}
-            }).then(function (response) {
-                $('#admin_users_container').replaceWith(response);
-                window.page.initShuffle();
-            });
-
-
-        }, 999));
+        // Update UI
+        function updateUi(result) {
+            for (const [key, value] of Object.entries(result)) {
+                document.getElementById('event-type-' + key).innerHTML = value.length;
+            }
+        }
     }
 }

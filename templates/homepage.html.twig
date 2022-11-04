@@ -5,7 +5,7 @@
 
 {# Page content #}
 {% block page_content %}
-    <body>
+    <body data-controller="homepage">
 
     <header class="bgc-medium" id="header">
         <div class="container-xxl container-xxl--nav">
@@ -16,7 +16,13 @@
             </div>
         </div>
     </header>
-
+    <script>
+       /* const eventSource = new EventSource("https://localhost:3000/.well-known/mercure?topic=https://leanatic.dev/api/events/1");
+        eventSource.onmessage = event => {
+            // Will be called every time an update is published by the server
+            console.log(JSON.parse(event.data));
+        }*/
+    </script>
 
     <main id="site">
 
@@ -27,64 +33,32 @@
                     <div class="col-sm-12 col-lg-3">
                         <div class="facts-list__item">
                             <div>
-                                <h6>TITLE 1</h6>
-                                <h4>999</h4>
+                                <h6>Event Type: VISITOR (1)</h6>
+                                <h4 id="event-type-1">0</h4>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-lg-3">
                         <div class="facts-list__item">
                             <div>
-                                <h6>TITLE 1</h6>
-                                <h4>999</h4>
+                                <h6>Event Type: REGISTRATION (2)</h6>
+                                <h4 id="event-type-2">0</h4>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-lg-3">
                         <div class="facts-list__item">
                             <div>
-                                <h6>TITLE 1</h6>
-                                <h4>999</h4>
+                                <h6>Event Type: LEANATIC (3)</h6>
+                                <h4 id="event-type-3">0</h4>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-lg-3">
                         <div class="facts-list__item">
                             <div>
-                                <h6>TITLE 1</h6>
-                                <h4>999</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-3">
-                        <div class="facts-list__item">
-                            <div>
-                                <h6>TITLE 1</h6>
-                                <h4>999</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-3">
-                        <div class="facts-list__item">
-                            <div>
-                                <h6>TITLE 1</h6>
-                                <h4>999</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-3">
-                        <div class="facts-list__item">
-                            <div>
-                                <h6>TITLE 1</h6>
-                                <h4>999</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-3">
-                        <div class="facts-list__item">
-                            <div>
-                                <h6>TITLE 1</h6>
-                                <h4>999</h4>
+                                <h6>Event Type: PIMCORE (4)</h6>
+                                <h4 id="event-type-4">0</h4>
                             </div>
                         </div>
                     </div>

@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\EventRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -20,16 +22,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  *         "get",
  *     }
  * )
+ * @ApiFilter(SearchFilter::class, properties={"type": "exact"})
  */
 class Event extends AbstractEntity
 {
-    /**
-     * TYPE_VISITOR = 1;
-     * TYPE_REGISTRATION = 2;
-     * TYPE_LEANATIC = 3;
-     * TYPE_PIMCORE = 4;
-     * .
-     */
+    public const TYPE_VISITOR = 1;
+    public const TYPE_REGISTRATION = 2;
+    public const TYPE_LEANATIC = 3;
+    public const TYPE_PIMCORE = 4;
+
     public const EVENT_TYPES = [1, 2, 3, 4];
 
     /**

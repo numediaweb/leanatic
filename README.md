@@ -71,3 +71,28 @@ The `config/prod/deploy.php` allows to sync local files and folder into the host
 * Create a new release that pushes changes to master branch.
 * Make sure your local ssh key to Github is loaded on the ssh agent: `ssh-add -l` if not add it `ssh-add -K ~/.ssh/something`
 * Run `php bin/console deploy -vvv` locally: NOT IN VM!
+
+## Mercure Protocole
+
+### Install
+wget https://github.com/dunglas/mercure/releases/download/v0.14.1/mercure-legacy_0.14.1_Linux_x86_64.tar.gz && mkdir mercure && tar -zxvf mercure-legacy_0.14.1_Linux_x86_64.tar.gz -C mercure && cd mercure/ && chmod a+u+x mercure
+
+
+### Generate JWT token
+use jwt.io
+
+```
+{
+  "mercure": {
+    "publish": [
+      "*"
+    ]
+  },
+  "alg": "HS256"
+}
+```
+
+### Run Mercure
+
+./mercure --jwt-key='YOUR_JWT_HERE' --addr='localhost:3000' --allow-anonymous --cors-allowed-origins='*'
+./mercure --jwt-key='YOUR_JWT_HERE' --addr='localhost:3000' --allow-anonymous --cors-allowed-origins='*'
