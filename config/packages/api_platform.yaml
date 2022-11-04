@@ -1,0 +1,13 @@
+api_platform:
+    # The title of the API.
+    title: 'Leanatic'
+    description: 'Test API for Leanatic events'
+    version: 'latest'
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+    patch_formats:
+        json: ['application/merge-patch+json']
+    swagger:
+        versions: [3]
+    oauth:
+        enabled: false
