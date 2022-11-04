@@ -1,0 +1,18 @@
+:root {
+  --bg-color: #474747;
+}
+
+.facts-list--border {
+  .facts-list__item {
+    border: 1px solid #fff03d;
+  }
+}
+
+.facts-list__item {
+  //background-color: #818181;
+
+  h6 {
+    font-size: 0.6em;
+    text-align: left;
+  }
+}
